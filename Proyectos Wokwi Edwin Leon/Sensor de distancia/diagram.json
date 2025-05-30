@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Edwin Santiago León Rodríguez",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -57.6,
+      "left": 91.24,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -36.9,
+      "left": -157.7,
+      "attrs": { "distance": "14" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 159.6, "left": -5.8, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [ "h133.2", "v38.4" ] ],
+    [ "ultrasonic1:VCC", "esp:3V3", "red", [ "v0", "h-86.4", "v-105.6", "h240" ] ],
+    [ "esp:GND.1", "led1:C", "black", [ "h-95.85", "v105.6" ] ],
+    [ "esp:2", "led1:A", "red", [ "h19.2", "v96", "h-9.6" ] ],
+    [ "esp:18", "ultrasonic1:ECHO", "blue", [ "h28.8", "v28.8", "h-287.2" ] ],
+    [ "esp:5", "ultrasonic1:TRIG", "green", [ "h38.4", "v28.8", "h-307.2" ] ]
+  ],
+  "dependencies": {}
+}
